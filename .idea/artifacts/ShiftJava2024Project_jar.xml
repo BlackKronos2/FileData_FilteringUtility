@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="ShiftJava2024Project:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/ShiftJava2024Project_jar</output-path>
+    <root id="archive" name="ShiftJava2024Project.jar">
+      <element id="module-output" name="ShiftJava2024Project" />
+    </root>
+  </artifact>
+</component>
