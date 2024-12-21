@@ -1,6 +1,6 @@
 public class StringToNumberConverter {
-    public static final int ExponentMax = 300;
-    public static final int MaxDoublePointsCount = 15; // Максимальное количество разрядов
+    public static final int ExponentMax = 37;
+    public static final int MaxDoublePointsCount = 36; // Максимальное количество разрядов
 
     // Метод для преобразования строки в число с плавающей точкой
     public static double stringToFloat(String str) throws Exception {
@@ -17,13 +17,19 @@ public class StringToNumberConverter {
         int numberPartPointsCount = 0;
 
         // Обработка целой части
-        while (i < str.length() && str.charAt(i) != '.') {
+        while (i < str.length()) {
+            if(str.charAt(i) == '.') {
+                i++;
+                break;
+            }
+
             char ch = str.charAt(i);
+            int digit = (ch - '0');
 
             if(ch == 'E' || ch == 'e')
                 return stringToExponential(str);
 
-            result = result * 10 + (ch - '0');
+            result = result * 10 + digit;
             i++;
             numberPartPointsCount++;
         }
@@ -40,7 +46,9 @@ public class StringToNumberConverter {
                 if(ch == 'E' || ch == 'e')
                     return stringToExponential(str);
 
-                result += (ch - '0') * decimalPlace;
+                int digit = (ch - '0');
+
+                result += digit * decimalPlace;
                 decimalPlace *= 0.1;
                 i++;
             }
